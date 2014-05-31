@@ -1,0 +1,62 @@
+<%= form_for @student, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :prename, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :prename, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.email_field :email, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :infomailings, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :infomailings, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :newsmailings, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :newsmailings, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :jobmailings, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :jobmailings, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :comments, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :comments, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :major_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :major_id, Study.all.collect, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :minor_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :minor_id, Study.all.collect, :id, :name, {:prompt => true, :include_blank => 'None'}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            students_path, :class => 'btn btn-default' %>
+ 
+<% end %>

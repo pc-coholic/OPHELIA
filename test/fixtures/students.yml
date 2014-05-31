@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  prename: MyString
+  email: MyString
+  infomailings: false
+  newsmailings: false
+  jobmailings: false
+  comments: MyText
+  major: 
+  minor_id: 
+
+two:
+  name: MyString
+  prename: MyString
+  email: MyString
+  infomailings: false
+  newsmailings: false
+  jobmailings: false
+  comments: MyText
+  major: 
+  minor_id: 

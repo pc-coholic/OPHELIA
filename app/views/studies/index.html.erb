@@ -1,0 +1,42 @@
+<%- model_class = Study -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:ECTS) %></th>
+      <th><%= model_class.human_attribute_name(:field_id) %></th>
+      <th><%= model_class.human_attribute_name(:degree_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @studies.each do |study| %>
+      <tr>
+        <td><%= link_to study.id, study_path(study) %></td>
+        <td><%= study.name %></td>
+        <td><%= study.ECTS %></td>
+        <td><%= study.field_id %></td>
+        <td><%= study.degree_id %></td>
+        <td><%=l study.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_study_path(study), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      study_path(study),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_study_path,
+            :class => 'btn btn-primary' %>

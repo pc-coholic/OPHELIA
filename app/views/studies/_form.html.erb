@@ -1,0 +1,32 @@
+<%= form_for @study, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ECTS, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ECTS, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :field_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :field_id, Field.all.collect, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :degree_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :degree_id, Degree.all.collect, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            studies_path, :class => 'btn btn-default' %>
+ 
+<% end %>
